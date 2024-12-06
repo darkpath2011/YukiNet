@@ -26,7 +26,7 @@ public class FileDownloader {
 
         ftpClient.setListHiddenFiles(true);
 
-        ftpClient.connect(YukiNet.getMasterIp(), 8633);
+        ftpClient.connect(YukiNet.getMasterIp(), YukiNet.getCfg().getInt("ftp.port",8633));
         ftpClient.login("anonymous", "");
         ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
     }
