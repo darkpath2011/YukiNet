@@ -14,6 +14,8 @@ http:
     port: -1
 
 ftp:
+  username: anonymous
+  password: ""
   port: 8633
 
 ident:

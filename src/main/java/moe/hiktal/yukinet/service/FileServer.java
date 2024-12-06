@@ -25,14 +25,14 @@ public class FileServer {
 
         FtpServerFactory factory = new FtpServerFactory();
         ListenerFactory listenerFactory = new ListenerFactory();
-        listenerFactory.setPort(8633);
+        listenerFactory.setPort(YukiNet.getCfg().getInt("ftp.port",8633));
         factory.addListener("default", listenerFactory.createListener());
         ConnectionConfigFactory connectionConfigFactory = new ConnectionConfigFactory();
         connectionConfigFactory.setAnonymousLoginEnabled(true);
         factory.setConnectionConfig(connectionConfigFactory.createConnectionConfig());
 
         BaseUser user = new BaseUser();
-        user.setName("anonymous");
+        user.setName(YukiNet.getCfg().getString("ftp.username","anonymous"));
         user.setHomeDirectory(YukiNet.CWD + "/template");
 
         try {

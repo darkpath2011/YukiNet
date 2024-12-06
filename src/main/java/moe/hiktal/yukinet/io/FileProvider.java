@@ -31,8 +31,8 @@ public class FileProvider {
         if (!resourcesDirectory.exists()) resourcesDirectory.mkdirs();
 
         ftpClient.setListHiddenFiles(true);
-        ftpClient.connect(YukiNet.getMasterIp(), 8633);
-        ftpClient.login("anonymous", "");
+        ftpClient.connect(YukiNet.getMasterIp(), YukiNet.getCfg().getInt("ftp.port",8633));
+        ftpClient.login(YukiNet.getCfg().getString("ftp.username","anonymous"), YukiNet.getCfg().getString("ftp.password",""));
         ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
     }
 
